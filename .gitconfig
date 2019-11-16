@@ -1,0 +1,15 @@
+[user]
+	name = Drew Rawitz
+	email = email@drewrawitz.com
+[github]
+  user = drewrawitz
+[alias]
+  l = log --pretty='format:%C(yellow)%h %C(blue)%ad %C(reset)%s%C(red)%d %C(green)%an%C(reset), %C(cyan)%ar' --date=short
+  stats = shortlog -sn
+[core]
+	quotepath = false
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
