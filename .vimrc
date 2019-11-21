@@ -1,6 +1,7 @@
 "--------------- Plugins --------------"
 call plug#begin()
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-sensible'
 Plug 'chriskempson/base16-vim'
 Plug 'scrooloose/nerdtree'
@@ -227,6 +228,9 @@ nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 "--------------- Plugin: NerdTree --------------"
 map <leader>n :NERDTreeToggle<cr>
+
+"--------------- Plugin: NerdCommenter --------------"
+map gcc <plug>NERDCommenterComment
 
 "--------------- Plugin: Ctrl-P --------------"
 nmap <C-e> :CtrlPMRUFiles<cr>
