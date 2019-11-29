@@ -33,6 +33,9 @@ bindkey "^R" history-incremental-search-backward
 export VISUAL=vim
 export EDITOR=$VISUAL
 
+# Fzf 
+export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
+
 # Aliases
   # Tmux
   alias tmux='TERM=xterm-256color; tmux'
@@ -53,7 +56,6 @@ export EDITOR=$VISUAL
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Mongo DB
 export PATH=~/mongodb/bin:$PATH

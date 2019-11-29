@@ -3,6 +3,7 @@ call plug#begin()
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-fugitive'
 Plug 'chriskempson/base16-vim'
 Plug 'scrooloose/nerdtree'
 Plug 'terryma/vim-multiple-cursors'
@@ -14,16 +15,11 @@ Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'posva/vim-vue'
 Plug 'christoomey/vim-tmux-navigator'
-"Plug 'w0rp/ale'
-"Plug 'prettier/vim-prettier', {
-" \ 'do': 'yarn install',
-" \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue'] }
-"
+Plug 'dyng/ctrlsf.vim'
 
 call plug#end()
 "--------------- Config --------------"
 let mapleader = "\<Space>"
-let $FZF_DEFAULT_COMMAND = 'ag --hidden -g ""'
 let $MYVIMRC = '~/.vimrc'
 
 " Encoding
@@ -152,8 +148,8 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 nmap <F2> <Plug>(coc-rename)
 
 " Remap for format selected region
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+"xmap <leader>f  <Plug>(coc-format-selected)
+"nmap <leader>f  <Plug>(coc-format-selected)
 
 augroup mygroup
   autocmd!
@@ -201,7 +197,7 @@ nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
 " Find symbol of current document
 nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
 " Search workspace symbols
-nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+"nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
 " Do default action for next item.
 nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 " Do default action for previous item.
@@ -231,15 +227,6 @@ map <leader>n :NERDTreeToggle<cr>
 
 "--------------- Plugin: NerdCommenter --------------"
 map gcc <plug>NERDCommenterComment
-
-"--------------- Plugin: Ctrl-P --------------"
-nmap <C-e> :CtrlPMRUFiles<cr>
-let g:ctrlp_custom_ignore = {
-    \ 'dir':  '\v[\/](\.git|deps|_build|node_modules|bower_components|vendor)$',
-    \ 'file': '\v\.(swp)$',
-    \ }
-let g:ctrlp_working_path_mode = 0
-let g:ctrlp_match_window = 'min:1,max:10,results:10'
 
 "--------------- Visuals --------------"
 let base16colorspace=256
@@ -283,7 +270,9 @@ nnoremap <leader>= :wincmd =<cr>
 nnoremap <C-p> :Files<CR>
 nnoremap T :Tags<CR>
 nnoremap t :BTags<CR>
-nnoremap s :Ag<CR>
+nnoremap <leader>f :CtrlSF<CR>
+nnoremap <leader>s :CtrlSF 
+nnoremap <leader>q :CtrlSFToggle
 
 " Faster buffer switching
 nnoremap <leader>b :Buffers<CR>
